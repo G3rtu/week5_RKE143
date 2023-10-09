@@ -5,11 +5,11 @@ const port = 3000;
 
 
 const server = http.createServer((request, response) => {
-    const requestUrl = parse(request.url).pathname;
+    const requestUrl = url.parse(request.url).pathname;
     console.log(requestUrl);
 
     if(requestUrl === '/') {
-        readFile('index.html', (error, fileContent) => {
+        fs.readFile('index.html', (error, fileContent) => {
             if(error){
                 response.writeHead(404);
                 response.write(`Error. File not found.`);
@@ -21,7 +21,7 @@ const server = http.createServer((request, response) => {
         });
 
     } else if (requestUrl === '/about') {
-        readFile('about.html', (error, fileContent) => {
+        fs.readFile('about.html', (error, fileContent) => {
             if(error){
                 response.writeHead(404);
                 response.write(`Error. File not found.`);
@@ -35,7 +35,7 @@ const server = http.createServer((request, response) => {
 
 
     } else if (requestUrl === '/contact') {
-        readFile('contact.html', (error, fileContent) => {
+        fs.readFile('contact.html', (error, fileContent) => {
             if(error){
                 response.writeHead(404);
                 response.write(`Error. File not found.`);
