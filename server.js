@@ -4,7 +4,7 @@ const fs = require('fs');
 const port = 3000;
 
 
-const server = createServer((request, response) => {
+const server = http.createServer((request, response) => {
     const requestUrl = parse(request.url).pathname;
     console.log(requestUrl);
 
